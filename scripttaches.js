@@ -29,13 +29,42 @@ let taskValue = task.value;
 
   // Ajouter le bouton Modifier
         //Créer le bouton modifier
-        let btnM =document.createElement(`button`);
+        let btnM =document.createElement("button");
         //Appliquer le texte "Modifier"
         btnM.textContent = "Modifier";
+        li.appendChild(btnM);
         //addEventListener > au click > fonction >
         btnM.addEventListener('click',function () {
-            listContainer.input(li);
+        let newinput = document.createElement("input");
+        newinput.type="text";
+        newinput.value= li.firstChild.textContent;
+        let btnS = document.createElement("button");
+        btnS.textContent="sauvegarder";
+        btnS.addEventListener("click",function () {
+            li.firstChild.textContent = newinput.value;
+            li.removeChild(newinput);
+            li.removeChild(btnS);
+            
+        })
+
+        li.insertBefore(newinput,btnM);
+        li.insertBefore(btnS,btnM);
+
+
+
             });
+
+
+
+
+
+
+
+
+
+
+
+// exercice 9
             //Céer un nouvel input
             //Ajouter le type 'text' à l'input
             //Ajouter en valeur de l'input le contenu textuel du premier élément enfant (firstChild) du li
